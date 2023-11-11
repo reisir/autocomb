@@ -1,0 +1,5 @@
+*.lnk
+*.png
+!folder.png
+*.ini
+!Autocomb.ini
