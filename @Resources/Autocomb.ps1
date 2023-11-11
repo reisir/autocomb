@@ -52,9 +52,18 @@ ImageName=#@#Icons\$((Get-ChildItem -Path $Icon).Name)
     }
 }
 
-function Autocomb {
-    $Items = Get-StartMenuItems
+function Empty {
+    # Remove comb folders
+    Get-ChildItem -Path "$($RootConfigPath)*" -Directory | Where-Object -FilterScript { $_.Name -notlike "@Resources" } | Remove-Item -Recurse -Force
+    # Remove icons and links
+    Get-ChildItem -Path "$($LinksPath)*" -File -Include "*.lnk" | Remove-Item
+    Get-ChildItem -Path "$($IconsPath)*" -File -Include "*.png" -Exclude "folder.png" | Remove-Item
+}
 
+function Autocomb {
+    Empty
+    # Create items
+    $Items = Get-StartMenuItems
     $Items | % { 
         FileChoose $_.FullName
         Copy-Item -Path $_.FullName -Destination "$($LinksPath)$($_.Name)" -Force
