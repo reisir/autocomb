@@ -19,6 +19,25 @@ function FileChoose {
     $RmApi.Bang("[!CommandMeasure FileChoose `"Resolve 1 $Path`"]")
 }
 
+function Empty {
+    [CmdletBinding()]
+    param (
+        [Parameter()]
+        [switch]
+        $SkipRefresh
+    )
+
+    # Remove comb folders
+    Get-ChildItem -Path "$($RootConfigPath)*" -Directory | Where-Object -FilterScript { $_.Name -notlike "@Resources" } | Remove-Item -Recurse -Force
+    # Remove icons and links
+    Get-ChildItem -Path "$($LinksPath)*" -File -Include "*.lnk" | Remove-Item
+    Get-ChildItem -Path "$($IconsPath)*" -File -Include "*.png" -Exclude "folder.png" | Remove-Item
+
+    if (!$SkipRefresh) {
+        $RmApi.Bang("[!RefreshApp]")
+    }
+}
+
 function New-Comb {
     [CmdletBinding()]
     param (
@@ -35,35 +54,24 @@ function New-Comb {
         New-Item -ItemType Directory -Path $SkinPath
         @"
 [Rainmeter]
-DefaultUpdateDivider=-1
 LeftMouseUpAction=["#@#Links\$($Item.Name)"]
-
-[Variables]
-Scale=1
-
-[\]
-@IncludeBase=#@#Base.inc
+@IncludeCommon=#@#Common.inc
 
 [Icon]
-Meter=Image
 ImageName=#@#Icons\$((Get-ChildItem -Path $Icon).Name)
 
 "@ | Out-File -FilePath "$($SkinPath)$($Item.BaseName).ini"
     }
 }
 
-function Empty {
-    # Remove comb folders
-    Get-ChildItem -Path "$($RootConfigPath)*" -Directory | Where-Object -FilterScript { $_.Name -notlike "@Resources" } | Remove-Item -Recurse -Force
-    # Remove icons and links
-    Get-ChildItem -Path "$($LinksPath)*" -File -Include "*.lnk" | Remove-Item
-    Get-ChildItem -Path "$($IconsPath)*" -File -Include "*.png" -Exclude "folder.png" | Remove-Item
-}
-
 function Autocomb {
-    Empty
-    # Create items
+    # Clear items
+    Empty -SkipRefresh
+
+    # Get items
     $Items = Get-StartMenuItems
+
+    # Generate combs
     $Items | % { 
         FileChoose $_.FullName
         Copy-Item -Path $_.FullName -Destination "$($LinksPath)$($_.Name)" -Force
@@ -72,9 +80,11 @@ function Autocomb {
             New-Comb -Item $_ -Icon $Icon
         }
     }
+
+    # Refresh Rainmeter
     $RmApi.Bang('[!RefreshApp]')
 }
 
-function Update {    
+function Update {
     return $True
 }
