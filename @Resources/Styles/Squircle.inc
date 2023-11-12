@@ -1,5 +1,5 @@
 [Variables]
-sphube=(#Size# / (#Hypersphube# = 0 ? 0.0001 : #Hypersphube#))
+sphube=(#Size# / (((#Hypersphube# < 0.5) && (#Hypersphube# > -0.5)) ? 0.5 : #Hypersphube#))
 ssphube=(#SizeWithStroke# - #sphube#)
 s=#SizeWithStroke#
 r=#Radius#
