@@ -13,4 +13,6 @@ ContextTitle5=-
 ContextAction5=
 ContextTitle6=Open skin menu
 ContextAction6=[!SkinMenu]
+ContextTitle7=Unload skin
+ContextAction7=[!UnloadConfig]
 

@@ -19,7 +19,7 @@ $menu = @(
     $current, $spacer,
     $editVariables, $refreshGroup, $spacer,
     $loadAll, $unloadAll, $spacer
-    $skinmenu
+    $skinmenu, $unloadSelf
 )
 
 Write-Menu

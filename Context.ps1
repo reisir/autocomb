@@ -24,6 +24,11 @@ $current = @{
     Action = '["#CURRENTPATH#"]'
 }
 
+$unloadSelf = @{
+    Title  = 'Unload skin'
+    Action = '[!UnloadConfig]'
+}
+
 $editVariables = @{ 
     Title  = if ($useLanguage) { '#__EditVariables#' } else { 'Edit variables' }
     Action = "[`"#CONFIGEDITOR#`" `"$editVariablesFile`"]"
@@ -66,7 +71,7 @@ function ToggleVariable {
 $menu = @(
     $current, $spacer,
     $editVariables, $refreshGroup, $spacer,
-    $skinmenu
+    $skinmenu, $unloadSelf
 )
 
 function Write-Menu {
