@@ -25,6 +25,7 @@ Stroke=StrokeWidth #ShadowStrokeWidth# | Stroke Color #ShadowStrokeColor#
 Fill=Fill Color #ShadowBackgroundColor#
 X=#ShadowX#
 Y=#ShadowY#
+Hidden=(1-#EnableShadow#)
 
 [Style]
 @IncludeStyle=#@#Styles\#Style#.inc
