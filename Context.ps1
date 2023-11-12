@@ -19,6 +19,11 @@ $spacer = @{
     Action = ''
 }
 
+$autocomb = @{
+    Title = 'Autocomb'
+    Action = '[!ActivateConfig Autocomb]'
+}
+
 $current = @{
     Title  = '#CURRENTCONFIG#'
     Action = '["#CURRENTPATH#"]'
@@ -69,7 +74,7 @@ function ToggleVariable {
 }
 
 $menu = @(
-    $current, $spacer,
+    $autocomb, $spacer,
     $editVariables, $refreshGroup, $spacer,
     $skinmenu, $unloadSelf
 )

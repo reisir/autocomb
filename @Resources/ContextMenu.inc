@@ -1,8 +1,8 @@
 [Rainmeter]
 RightMouseUpAction=[!SkinCustomMenu]
 Group=Autocomb
-ContextTitle=#CURRENTCONFIG#
-ContextAction=["#CURRENTPATH#"]
+ContextTitle=Autocomb
+ContextAction=[!ActivateConfig Autocomb]
 ContextTitle2=-
 ContextAction2=
 ContextTitle3=Edit variables
