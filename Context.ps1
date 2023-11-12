@@ -26,7 +26,7 @@ $current = @{
 
 $unloadSelf = @{
     Title  = 'Unload skin'
-    Action = '[!UnloadConfig]'
+    Action = '[!DeactivateConfig]'
 }
 
 $editVariables = @{ 

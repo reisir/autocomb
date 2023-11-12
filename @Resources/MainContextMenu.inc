@@ -20,5 +20,5 @@ ContextAction8=
 ContextTitle9=Open skin menu
 ContextAction9=[!SkinMenu]
 ContextTitle10=Unload skin
-ContextAction10=[!UnloadConfig]
+ContextAction10=[!DeactivateConfig]
 
