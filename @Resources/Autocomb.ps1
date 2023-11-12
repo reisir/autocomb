@@ -54,8 +54,10 @@ function New-Comb {
         New-Item -ItemType Directory -Path $SkinPath
         @"
 [Rainmeter]
-LeftMouseUpAction=["#@#Links\$($Item.Name)"]
 @IncludeCommon=#@#Common.inc
+
+[Base]
+LeftMouseUpAction=["#@#Links\$($Item.Name)"]
 
 [Icon]
 ImageName=#@#Icons\$((Get-ChildItem -Path $Icon).Name)
@@ -72,10 +74,16 @@ function Autocomb {
     $Items = Get-StartMenuItems
 
     # Generate combs
-    $Items | % { 
+    $Items | ForEach-Object {
+        # Skip uninstalls
+        if ($_.Name -like "Uninstall*") { return }
+        # Call FileChoose to copy icon
         FileChoose $_.FullName
+        # Copy the Start Menu .lnk file
         Copy-Item -Path $_.FullName -Destination "$($LinksPath)$($_.Name)" -Force
+        # Get the Icon name
         $Icon = $RmApi.MeasureStr('FileChoose')
+        # If the Icon is from an .exe, create a comb for it
         if ($Icon -match "exe\.png$") {
             New-Comb -Item $_ -Icon $Icon
         }
