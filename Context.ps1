@@ -65,7 +65,7 @@ function ToggleVariable {
 
 $menu = @(
     $current, $spacer,
-    $editVariables, $spacer,
+    $editVariables, $refreshGroup, $spacer,
     $skinmenu
 )
 

@@ -1,8 +1,15 @@
 [Rainmeter]
 DefaultUpdateDivider=-1
-Group=Autocomb
-@IncludeVariables=#@#Variables.inc
 @IncludeContextMenu=#@#ContextMenu.inc
+@IncludeVariables=#@#Variables.inc
+SkinHeight=#Size#
+SkinWidth=#Size#
+
+[Variables]
+StrokeRadius=(#StrokeWidth# / 2)
+SizeWithStroke=(#Size# - #StrokeWidth#)
+Radius=((#Size# / 2) - #StrokeRadius#)
+RadiusOffset=(#Size# / 2)
 
 [Base]
 Meter=Shape
@@ -10,7 +17,7 @@ Meter=Shape
 
 [Icon]
 Meter=Image
-X=((#StrokeWidth# / 2) + #Padding# - #StrokeWidth# / 2)
-Y=((#StrokeWidth# / 2) + #Padding# - #StrokeWidth# / 2)
-W=(#Size# - (#Padding# * 2))
-H=(#Size# - (#Padding# * 2))
+X=(#Size# / 2 - #IconSize# / 2)
+Y=(#Size# / 2 - #IconSize# / 2)
+W=(#IconSize#)
+H=(#IconSize#)
