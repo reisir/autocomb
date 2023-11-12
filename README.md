@@ -6,6 +6,7 @@ Automatically generate combs for your programs. No more manually creating custom
 
 - Automatic comb generation for each application on your system!
 - Customizable styles and colors and shadows
+- Very small filesize due to not bundling in a ton of icons!
 
 # Installation
 
