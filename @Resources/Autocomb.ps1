@@ -90,7 +90,7 @@ function Autocomb {
     }
 
     # Refresh Rainmeter
-    $RmApi.Bang('[!RefreshApp]')
+    $RmApi.Bang('[!DeactivateConfig Autocomb][!RefreshApp]')
 }
 
 function Update {
