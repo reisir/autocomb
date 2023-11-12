@@ -5,7 +5,7 @@ s3=(Sqrt(3) * #r2#)
 
 sr1=#ShadowRadius#
 sr2=(#sr1# / 2)
-ss3=(Sqrt(3) * #r2#)
+ss3=(Sqrt(3) * #sr2#)
 
 [Base]
 Shape=Path Hexagon | Offset (#RadiusOffset#),(#RadiusOffset#) | StrokeLineJoin #StrokeLineJoin# | Rotate #HexagonRotation# | Extend Stroke, Fill
