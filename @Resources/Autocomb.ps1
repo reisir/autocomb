@@ -67,6 +67,9 @@ ImageName=#@#Icons\$((Get-ChildItem -Path $Icon).Name)
 }
 
 function Autocomb {
+    # Unpause Autocomb animation
+    $RmApi.Bang("[!UnpauseMeasure MeasureHypersphube]")
+
     # Clear items
     Empty -SkipRefresh
 
@@ -87,6 +90,8 @@ function Autocomb {
         if ($Icon -match "exe\.png$") {
             New-Comb -Item $_ -Icon $Icon
         }
+        # The loop runs in the UI thread, force UI to update :3
+        $RmApi.Bang("[!Update][!Redraw]")
     }
 
     # Refresh Rainmeter
