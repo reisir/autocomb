@@ -1,4 +1,8 @@
+[Variables]
+R=(#Size# * #RoundedRounding#)
+
 [Base]
-Shape=Rectangle #StrokeRadius#,#StrokeRadius#,#SizeWithStroke#, #SizeWithStroke#,(#Size# * #RoundedRounding#),(#Size# * #RoundedRounding#) | Extend Stroke, Fill
-Stroke=StrokeWidth #StrokeWidth# | Stroke Color #StrokeColor#
-Fill=Fill Color #BackgroundColor#
+Shape=Rectangle #StrokeRadius#,#StrokeRadius#,#SizeWithStroke#, #SizeWithStroke#,#R# | Extend Stroke, Fill
+
+[Shadow]
+Shape=Rectangle #ShadowStrokeRadius#,#ShadowStrokeRadius#,#ShadowSizeWithStroke#, #ShadowSizeWithStroke#,#R# | Extend Stroke, Fill

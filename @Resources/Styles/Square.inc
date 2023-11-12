@@ -1,4 +1,5 @@
 [Base]
 Shape=Rectangle #StrokeRadius#,#StrokeRadius#,#SizeWithStroke#,#SizeWithStroke# | Extend Stroke, Fill
-Stroke=StrokeWidth #StrokeWidth# | Stroke Color #StrokeColor#
-Fill=Fill Color #BackgroundColor#
+
+[Shadow]
+Shape=Rectangle #ShadowStrokeRadius#,#ShadowStrokeRadius#,#ShadowSizeWithStroke#,#ShadowSizeWithStroke# | Extend Stroke, Fill

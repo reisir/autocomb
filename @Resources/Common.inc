@@ -2,8 +2,6 @@
 DefaultUpdateDivider=-1
 @IncludeContextMenu=#@#ContextMenu.inc
 @IncludeVariables=#@#Variables.inc
-SkinHeight=#Size#
-SkinWidth=#Size#
 
 [Variables]
 StrokeRadius=(#StrokeWidth# / 2)
@@ -11,8 +9,24 @@ SizeWithStroke=(#Size# - #StrokeWidth#)
 Radius=((#Size# / 2) - #StrokeRadius#)
 RadiusOffset=(#Size# / 2)
 
+ShadowStrokeRadius=(#ShadowStrokeWidth# / 2)
+ShadowSizeWithStroke=(#Size# - #ShadowStrokeWidth#)
+ShadowRadius=((#Size# / 2) - #ShadowStrokeRadius#)
+ShadowRadiusOffset=(#Size# / 2)
+
 [Base]
 Meter=Shape
+Stroke=StrokeWidth #StrokeWidth# | Stroke Color #StrokeColor#
+Fill=Fill Color #BackgroundColor#
+
+[Shadow]
+Meter=Shape
+Stroke=StrokeWidth #ShadowStrokeWidth# | Stroke Color #ShadowStrokeColor#
+Fill=Fill Color #ShadowBackgroundColor#
+X=#ShadowX#
+Y=#ShadowY#
+
+[Style]
 @IncludeStyle=#@#Styles\#Style#.inc
 
 [Icon]
