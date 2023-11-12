@@ -70,11 +70,11 @@ function Autocomb {
     # Unpause Autocomb animation
     $RmApi.Bang("[!UnpauseMeasure MeasureHypersphube]")
 
-    # Clear items
-    Empty -SkipRefresh
-
     # Get items
     $Items = Get-StartMenuItems
+
+    # Clear items
+    Empty -SkipRefresh
 
     # Generate combs
     $Items | ForEach-Object {
@@ -95,7 +95,25 @@ function Autocomb {
     }
 
     # Refresh Rainmeter
-    $RmApi.Bang('[!DeactivateConfig Autocomb][!RefreshApp]')
+    $RmApi.Bang('[!RefreshApp]')
+}
+
+function Load {
+    # Get items
+    $Items = Get-StartMenuItems
+    $Bangs = ""
+    $Items | ForEach-Object {
+        $SkinPath = "$($RootConfigPath)$($_.BaseName)\"
+        if (Test-Path $SkinPath) {
+            $Bangs = $Bangs + "[!ActivateConfig `"Autocomb\$($_.BaseName)`"]"
+        }
+    }
+    Write-Host $Bangs
+    $RmApi.Bang($Bangs)
+}
+
+function Unload {
+    $RmApi.Bang("[!DeactivateConfigGroup Autocomb][!ActivateConfig Autocomb]")
 }
 
 function Update {
