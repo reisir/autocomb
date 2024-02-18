@@ -39,3 +39,12 @@ Autocombs are automatically generated. Every comb is wiped and re-generated when
 ## You've said you hate launcher skins?
 
 Yes but Autocomb is an interesting project. And I like doing things better than other people :3
+
+# TODO: 
+
+Please for the love of god can someone PR these in thanks
+
+- [ ] Ability to make custom icons. Save them in a conf file in case the autocomb main script is run again.
+- [ ] Automatic aligner that loops through the combs and puts them in a grid.
+- [ ] Way to detect Steam games and get icons for em
+ 
